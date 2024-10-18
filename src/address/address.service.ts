@@ -16,7 +16,7 @@ export class AddressService {
     ) {};
 
     async createAddress(createAddressDto: CreateAddressDto, userId: number): Promise<AddressEntity> {
-        await this.userService.findUserId(userId);
+        await this.userService.findUserById(userId);
         await this.cityService.findCityById(createAddressDto.cityId);
         return this.addressRepository.save({
             ...createAddressDto,
